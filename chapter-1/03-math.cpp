@@ -1,4 +1,3 @@
-//create a program that inputs a character and outputs another character that it corresponds to, like a code wheel.
 //create a program that shows how operator precedence is important. (Basically do whatever you want with a bunch of operators and parenthesis)
 
 
@@ -28,5 +27,13 @@ int main() {
 	cout<<"The division result is: "<<division<<endl;
 	cout<<"The modulo result is: "<<modulo<<endl;
 
+//create a program that inputs a character and outputs another character that it corresponds to, like a code wheel.
+	char myChar;
+	
+	cout<<endl<<"Input a Letter: ";
+	cin>>myChar;
+	myChar += 5;
+
+	cout<<"The output is: "<<myChar<<endl;
 	return 0;
 }
