@@ -132,8 +132,8 @@ void exponential(){
 	cin>>base;
 	cout<<"Type the exponent: ";
 	cin>>exponent;
-
-	if (base == 0 && exponent <= 0 || base < 0 && exponent % 2 == 0) {
+	
+	if (base == 0 && exponent <= 0 || exponent != 0 && base < 0 && exponent % 2 == 0) {
 		cout<<"MATH ERROR - operation not defined."<<endl;
 	} else if (exponent > 0) {
 		int result = 1;
@@ -148,5 +148,7 @@ void exponential(){
 			result *= (1/((double)base));
 		}	
 		cout<<base<<" ^ "<<exponent<<" = "<<result<<endl;
+	} else {
+		cout<<base<<" ^  0 = 1";
 	}
 }
