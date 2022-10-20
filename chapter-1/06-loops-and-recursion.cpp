@@ -7,7 +7,7 @@ void menuRecursion();
 int calculateFactorialByLoop(int number);
 int calculateFactorialByRecursion(int number);
 void checkPrime();
-
+void exponential();
 
 int main(){
 	menu();
@@ -30,7 +30,8 @@ void menu() {
 			break;
 		case 2:
 			//write a function that calculates a value to an exponent. It should be able to handle any integer exponent(ie. positive and negative). You can use a loop, recursion or both for this.
-			cout<<"CALCULATING EXPONENT...";
+			exponential();
+			menuRecursion();
 			break;
 		case 3:
 			//Write a fucntion that checks if a number is prime.
@@ -45,7 +46,8 @@ void menu() {
 
 void menuRecursion(){
 	char recursionDecision;
-	cout<<"Process finished! Do you want to continue? (type y|n)"<<endl;
+	cout<<"------------------------------------------------------------"<<endl;
+	cout<<"Process finished! Do you want to continue? (Type 'Y' or 'N')"<<endl;
 	cin>>recursionDecision;
 
 	if (recursionDecision == 'y' || recursionDecision == 'Y') {
@@ -102,8 +104,8 @@ void checkPrime(){
 		checkPrime();
 
 	} else if (number == 1) {
-		cout<<"1 is prime by definition."<<endl
-;
+		cout<<"1 is prime by definition."<<endl;
+
 	} else if (number == 2) {
 		cout<<"2 is a prime number."<<endl;
 
@@ -120,5 +122,31 @@ void checkPrime(){
 		} else {
 			cout<<number<<" is NOT a prime number."<<endl;
 		}
+	}
+}
+
+void exponential(){
+	int base;
+	int exponent;
+	cout<<"Type the base: ";
+	cin>>base;
+	cout<<"Type the exponent: ";
+	cin>>exponent;
+
+	if (base == 0 && exponent <= 0 || base < 0 && exponent % 2 == 0) {
+		cout<<"MATH ERROR - operation not defined."<<endl;
+	} else if (exponent > 0) {
+		int result = 1;
+		for (int i = 1; i <= exponent; i++) {
+			result *= base;
+		}
+		cout<<base<<" ^ "<<exponent<<" = "<<result<<endl;
+	} else if (exponent < 0) {
+		//cout<<"fraction";
+		double result = 1;
+		for (int i = 1; i <= (exponent * -1); i++) {
+			result *= (1/((double)base));
+		}	
+		cout<<base<<" ^ "<<exponent<<" = "<<result<<endl;
 	}
 }
