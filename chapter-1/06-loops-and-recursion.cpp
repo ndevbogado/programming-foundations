@@ -2,6 +2,7 @@
 using namespace std;
 
 void menu();
+void factorialMenu();
 int calculateFactorialByLoop(int number);
 int calculateFactorialByRecursion(int number);
 
@@ -27,10 +28,7 @@ void menu() {
 	cin>>decision;
 	switch(decision) {
 		case 1:
-			int number;
-			cout<<"CALCULATING FACTORIAL..."<<endl;
-			cin>>number;
-			cout<<number<<"! = "<<calculateFactorialByLoop(number)<<endl;
+			factorialMenu();
 			break;
 		case 2:
 			cout<<"CALCULATING EXPONENT...";
@@ -43,6 +41,27 @@ void menu() {
 			break;
 	}	
 }
+
+void factorialMenu() {
+	char factorialDecision;
+	int number;
+
+	cout<<"FACTORIAL MENU"<<endl<<"=============="<<endl;
+	cout<<"(r) Calculate factorial by recursion. "<<endl;
+	cout<<"(l) Calculate factorial by loop."<<endl;
+	cin>>factorialDecision;
+	
+
+	cout<<"Type a number to calculate the factorial: ";
+	cin>>number;
+
+	if(factorialDecision == 'r' || factorialDecision == 'R') {
+		cout<<number<<"! = "<<calculateFactorialByRecursion(number)<<endl;
+	}else {
+		cout<<number<<"! = "<<calculateFactorialByLoop(number)<<endl;
+	}
+}
+
 int calculateFactorialByLoop(int number){
 	int factorial = 1;
 	for(int i = 1; i <= number; i++){
