@@ -6,15 +6,11 @@ void factorialMenu();
 void menuRecursion();
 int calculateFactorialByLoop(int number);
 int calculateFactorialByRecursion(int number);
+void checkPrime();
+
 
 int main(){
-	
 	menu();
-	//write a function that calculates a factorial using a loop, and one that calculates it using recursion
-	
-	//write a function that calculates a value to an exponent. It should be able to handle any integer exponent(ie. positive and negative). You can use a loop, recursion or both for this.
-
-//Write a fucntion that checks if a number is prime.
 }
 
 
@@ -29,13 +25,17 @@ void menu() {
 	cin>>decision;
 	switch(decision) {
 		case 1:
+			//write a function that calculates a factorial using a loop, and one that calculates it using recursion
 			factorialMenu();
 			break;
 		case 2:
+			//write a function that calculates a value to an exponent. It should be able to handle any integer exponent(ie. positive and negative). You can use a loop, recursion or both for this.
 			cout<<"CALCULATING EXPONENT...";
 			break;
 		case 3:
-			cout<<"CHECKING PRIME NUMBER...";
+			//Write a fucntion that checks if a number is prime.
+			checkPrime();
+			menuRecursion();
 			break;
 		default:
 			cout<<"Goodbye!"<<endl;
@@ -48,8 +48,11 @@ void menuRecursion(){
 	cout<<"Process finished! Do you want to continue? (type y|n)"<<endl;
 	cin>>recursionDecision;
 
-	if (recursionDecision == 'y' || recursionDecision == 'Y')
+	if (recursionDecision == 'y' || recursionDecision == 'Y') {
 		menu();
+	} else {
+		cout<<"Goodbye!"<<endl;
+	}
 }
 
 void factorialMenu() {
@@ -86,5 +89,36 @@ int calculateFactorialByRecursion(int number){
 		return number;
 	} else {
 		return number * calculateFactorialByRecursion(number-1);
+	}
+}
+
+void checkPrime(){
+	int number;
+	cout<<"Type a natural number to check if it's prime: ";
+	cin>>number;
+	
+	if(number <= 0) {
+		cout<<"Please...";
+		checkPrime();
+
+	} else if (number == 1) {
+		cout<<"1 is prime by definition."<<endl
+;
+	} else if (number == 2) {
+		cout<<"2 is a prime number."<<endl;
+
+	} else {
+		int count = 0;
+		
+		for (int i = 2; i < number; i++){
+			if (number % i == 0){
+				count++;
+			}
+		}
+		if (count == 0) {
+			cout<<number<<" is a prime number."<<endl;
+		} else {
+			cout<<number<<" is NOT a prime number."<<endl;
+		}
 	}
 }
