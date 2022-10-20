@@ -137,18 +137,18 @@ void exponential(){
 		cout<<"MATH ERROR - operation not defined."<<endl;
 	} else if (exponent > 0) {
 		int result = 1;
-		for (int i = 1; i <= exponent; i++) {
+		for (int i = 1; i <= exponent; i++)
 			result *= base;
-		}
 		cout<<base<<" ^ "<<exponent<<" = "<<result<<endl;
+
 	} else if (exponent < 0) {
-		//cout<<"fraction";
 		double result = 1;
-		for (int i = 1; i <= (exponent * -1); i++) {
-			result *= (1/((double)base));
-		}	
+		double inverse = 1/((double)base);
+		for (int i = 1; i <= (exponent * -1); i++)
+			result *= inverse;
 		cout<<base<<" ^ "<<exponent<<" = "<<result<<endl;
+	
 	} else {
-		cout<<base<<" ^  0 = 1";
+		cout<<base<<" ^ 0 = 1"<<endl;
 	}
 }
