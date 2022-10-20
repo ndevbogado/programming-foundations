@@ -3,6 +3,7 @@ using namespace std;
 
 void menu();
 int calculateFactorialByLoop(int number);
+int calculateFactorialByRecursion(int number);
 
 int main(){
 	
@@ -48,4 +49,12 @@ int calculateFactorialByLoop(int number){
 		factorial *= i;
 	}
 	return factorial;
+}
+
+int calculateFactorialByRecursion(int number){
+	if(number == 1) {
+		return number;
+	} else {
+		return number * calculateFactorialByRecursion(number-1);
+	}
 }
