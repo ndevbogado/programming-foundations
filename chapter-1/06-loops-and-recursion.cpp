@@ -3,6 +3,7 @@ using namespace std;
 
 void menu();
 void factorialMenu();
+void menuRecursion();
 int calculateFactorialByLoop(int number);
 int calculateFactorialByRecursion(int number);
 
@@ -42,6 +43,15 @@ void menu() {
 	}	
 }
 
+void menuRecursion(){
+	char recursionDecision;
+	cout<<"Process finished! Do you want to continue? (type y|n)"<<endl;
+	cin>>recursionDecision;
+
+	if (recursionDecision == 'y' || recursionDecision == 'Y')
+		menu();
+}
+
 void factorialMenu() {
 	char factorialDecision;
 	int number;
@@ -60,6 +70,7 @@ void factorialMenu() {
 	}else {
 		cout<<number<<"! = "<<calculateFactorialByLoop(number)<<endl;
 	}
+	menuRecursion();
 }
 
 int calculateFactorialByLoop(int number){
