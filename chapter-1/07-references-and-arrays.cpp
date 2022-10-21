@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void realRoots(double&a,double&b,double&c,double&firstRoot,double&secondRoot);
+void realRoots(double&a,double&b,double&c,double&firstRoot,double&secondRoot, bool&isReal);
 
 void menu ();
 
@@ -27,14 +27,16 @@ void menu() {
 	cout<<"------------------------------------------------"<<endl;
 	cin>>decision;
 
+	double a;
+	double b;
+	double c;
+
+	double firstRoot;
+	double secondRoot;
+	
+	bool isReal=true;
 	switch(decision) {
 		case 1: 
-			double a;
-			double b;
-			double c;
-
-			double firstRoot;
-			double secondRoot;
 			
 			do {
 				cout<<"Enter the first, non '0',  parameter 'a': "<<endl;
@@ -46,9 +48,11 @@ void menu() {
 			cin>>c;
 			
 			
-			realRoots(a,b,c,firstRoot,secondRoot);
-			cout<<"# X1 = "<<firstRoot<<endl;
-			cout<<"# X2 = "<<secondRoot<<endl;
+			realRoots(a,b,c,firstRoot,secondRoot, isReal);
+			if (isReal) {
+				cout<<"# X1 = "<<firstRoot<<endl;
+				cout<<"# X2 = "<<secondRoot<<endl;
+			}
 			break;
 		case 2:
 			cout<<"Manipulating arrays..."<<endl;
@@ -70,12 +74,13 @@ void menu() {
 	}
 }
 
-void realRoots(double&a,double&b, double&c, double&firstRoot, double&secondRoot){
+void realRoots(double&a,double&b, double&c, double&firstRoot, double&secondRoot, bool&isReal){
 	//Write a function (using reference parameters) that calculates the roots of a quadratic functions (feel free to use cmath for square roots and powers).
 	double rootArgument = pow(b,2)-4*a*c;
 
 	if (rootArgument < 0) {
 		cout<<"There aren't any real roots for the quadratic equation entered"<<endl;
+		isReal = false;
 	} else {
 		double squareRoot = sqrt(rootArgument);
 		
