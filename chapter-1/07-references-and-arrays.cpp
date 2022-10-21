@@ -35,14 +35,17 @@ void menu() {
 
 			double firstRoot;
 			double secondRoot;
-
-			cout<<"Enter the first parameter 'a': "<<endl;
-			cin>>a;
+			
+			do {
+				cout<<"Enter the first, non '0',  parameter 'a': "<<endl;
+				cin>>a;
+			} while (a == 0);
 			cout<<"Enter the second parameter 'b': "<<endl;
 			cin>>b;
 			cout<<"Enter the third parameter 'c': "<<endl;
 			cin>>c;
-
+			
+			
 			realRoots(a,b,c,firstRoot,secondRoot);
 			cout<<"# X1 = "<<firstRoot<<endl;
 			cout<<"# X2 = "<<secondRoot<<endl;
