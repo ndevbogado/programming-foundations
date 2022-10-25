@@ -10,6 +10,8 @@ void menu ();
 
 void inverseString(char cstring[]);
 
+void recursion();
+
 //Write a function that puts values into an array of integers, another function that sorts the values from lowest to highest and finally a function to output the array.
 
 int main() {
@@ -54,15 +56,18 @@ void menu() {
 				cout<<"# X1 = "<<firstRoot<<endl;
 				cout<<"# X2 = "<<secondRoot<<endl;
 			}
+			recursion();
 			break;
 		case 2:
 			cout<<"Manipulating arrays..."<<endl;
+			recursion();
 			break;
 		case 3:
 			cout<<"Enter a string you want to manipulate: "<<endl;
 			char cstring[5];
 			cin>>cstring;
 			inverseString(cstring);
+			recursion();
 			break;
 		default:
 			char exit;
@@ -101,4 +106,15 @@ void inverseString(char cstring[]) {
 	for (int i = 0; cstring[i]; i++) {
 		cout<<cstring[i]<<endl;
 	} 
+}
+
+void recursion() {
+	cout<<"Process terminated! Do you want to reiterate? (Type 'Y' or 'N')"<<endl;
+	char recursion;
+	cin>>recursion;
+	if (recursion == 'Y' || recursion == 'y') {
+		menu();
+	} else {
+		cout<<"Good-Bye!"<<endl;
+	}
 }
