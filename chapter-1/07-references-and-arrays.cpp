@@ -8,7 +8,7 @@ void realRoots(double&a,double&b,double&c,double&firstRoot,double&secondRoot, bo
 
 void menu ();
 
-void inverseString(char cstring[]);
+void inverseString(char cstring[], int size);
 
 void recursion();
 
@@ -63,11 +63,14 @@ void menu() {
 			recursion();
 			break;
 		case 3:
+			{
 			cout<<"Enter a string you want to manipulate: "<<endl;
+			int size = 5;
 			char cstring[5];
 			cin>>cstring;
-			inverseString(cstring);
+			inverseString(cstring,size );
 			recursion();
+			}
 			break;
 		default:
 			char exit;
@@ -99,13 +102,16 @@ void realRoots(double&a,double&b, double&c, double&firstRoot, double&secondRoot,
 	}	
 }
 
-void inverseString(char cstring[]) {
+void inverseString(char cstring[], int size) {
 //Write a program to input a c-style string and output it backwards, character by characte, encoded with a code-wheel type offset (each character is offset).
 
-	char auxString [5];
+	char auxString [size];
 	for (int i = 0; cstring[i]; i++) {
-		cout<<cstring[i]<<endl;
+		auxString[i] = cstring[size - 2 - i];
+		cout<<auxString[i]<<endl;
 	} 
+	cout<<"Original String: "<<cstring<<endl;
+	cout<<"Inverted String: "<<auxString<<endl;
 }
 
 void recursion() {
