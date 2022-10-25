@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-
+#include <array>
 
 using namespace std;
 
@@ -8,8 +8,9 @@ void realRoots(double&a,double&b,double&c,double&firstRoot,double&secondRoot, bo
 
 void menu ();
 
+void inverseString(char cstring[]);
+
 //Write a function that puts values into an array of integers, another function that sorts the values from lowest to highest and finally a function to output the array.
-//Write a program to input a c-style string and output it backwards, character by characte, encoded with a code-wheel type offset (each character is offset).
 
 int main() {
 	menu();
@@ -58,7 +59,10 @@ void menu() {
 			cout<<"Manipulating arrays..."<<endl;
 			break;
 		case 3:
-			cout<<"Manipulating c-strings..."<<endl;
+			cout<<"Enter a string you want to manipulate: "<<endl;
+			char cstring[5];
+			cin>>cstring;
+			inverseString(cstring);
 			break;
 		default:
 			char exit;
@@ -87,7 +91,14 @@ void realRoots(double&a,double&b, double&c, double&firstRoot, double&secondRoot,
 		firstRoot = (-b + squareRoot)/(2*a);
 		secondRoot = (-b - squareRoot)/(2*a);
 
-	}
+	}	
+}
 
-	
+void inverseString(char cstring[]) {
+//Write a program to input a c-style string and output it backwards, character by characte, encoded with a code-wheel type offset (each character is offset).
+
+	char auxString [5];
+	for (int i = 0; cstring[i]; i++) {
+		cout<<cstring[i]<<endl;
+	} 
 }
