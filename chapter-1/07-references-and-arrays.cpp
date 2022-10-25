@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-
+#include <array>
 
 using namespace std;
 
@@ -8,8 +8,11 @@ void realRoots(double&a,double&b,double&c,double&firstRoot,double&secondRoot, bo
 
 void menu ();
 
+void inverseString(char cstring[], int size);
+
+void recursion();
+
 //Write a function that puts values into an array of integers, another function that sorts the values from lowest to highest and finally a function to output the array.
-//Write a program to input a c-style string and output it backwards, character by characte, encoded with a code-wheel type offset (each character is offset).
 
 int main() {
 	menu();
@@ -53,12 +56,38 @@ void menu() {
 				cout<<"# X1 = "<<firstRoot<<endl;
 				cout<<"# X2 = "<<secondRoot<<endl;
 			}
+			recursion();
 			break;
 		case 2:
 			cout<<"Manipulating arrays..."<<endl;
+			recursion();
 			break;
 		case 3:
-			cout<<"Manipulating c-strings..."<<endl;
+			{
+			int size;
+			int realSize;
+			bool repeated = false;
+	
+			cout<<"Enter the length of your string: "<<endl;
+			cin>>size;
+			char cstring[size];
+		
+			do {
+				realSize = 0;
+				if(!repeated)
+					cout<<"Enter a string you want to manipulate: ( size = "<<size<<" )"<<endl;
+				cin>>cstring;
+				for (int i = 0; cstring[i]; i++){
+					realSize++;
+					repeated = true;
+				}
+				if (realSize != size) 
+					cout<<"Please... Enter a string you want to manipulate with a length of "<<size<<" character: ( last string size = "<<realSize<<" )"<<endl;
+			} while(size != realSize);
+
+			inverseString(cstring,size);
+			recursion();
+			}
 			break;
 		default:
 			char exit;
@@ -87,7 +116,27 @@ void realRoots(double&a,double&b, double&c, double&firstRoot, double&secondRoot,
 		firstRoot = (-b + squareRoot)/(2*a);
 		secondRoot = (-b - squareRoot)/(2*a);
 
-	}
+	}	
+}
 
+void inverseString(char cstring[], int size) {
+//Write a program to input a c-style string and output it backwards, character by characte, encoded with a code-wheel type offset (each character is offset).
 	
+	char auxString [size];
+	for (int i = 0; cstring[i]; i++) {
+		auxString[i] = cstring[size - 1 - i];
+	} 
+	cout<<"Original String: "<<cstring<<endl;
+	cout<<"Inverted String: "<<auxString<<endl;
+}
+
+void recursion() {
+	cout<<"Process terminated! Do you want to reiterate? (Type 'Y' or 'N')"<<endl;
+	char recursion;
+	cin>>recursion;
+	if (recursion == 'Y' || recursion == 'y') {
+		menu();
+	} else {
+		cout<<"Good-Bye!"<<endl;
+	}
 }
