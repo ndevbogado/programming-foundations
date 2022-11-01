@@ -21,6 +21,26 @@ void fileInputMenu() {
 	fin.open(fileName);
 	if (fin.good()){
 		cout<<fileName<<" opened successfully!"<<endl;
+		int charNum = 0;
+		int lineNum = 0;
+		int number;
+		string line;
+		
+		for (int lines = 0; getline(fin,line); lines++) {
+			lineNum++;
+			cout<<line<<endl;
+		}
+		
+		cout<<"Number of Lines in "<<fileName<<", is: "<<lineNum<<endl;
+		do {
+			fin>>number;
+			if (number) {
+				cout<<number<<endl;
+				charNum++;
+			}
+		} while (fin.good());
+		cout<<"The number of characters in "<<fileName<<" is: "<<charNum<<endl;
+		
 		recursion();
 	} else {
 		cout<<"An Error has occurred while opening: "<<fileName<<endl;	
@@ -39,6 +59,7 @@ void recursion() {
 		cout<<"Good-Bye!"<<endl;
 	}
 }
+
 //Write a program to count the number of lines and the number of characters in a text file.\
 //write a program to input a specified number of integers values from a file into an array, sort the array from lowest to highest and output the array to the console.
 //Write a program that allows the user to write input to a text file lone by line, until they enter 'quit'.
