@@ -17,9 +17,38 @@ void fileInputMenu() {
 	string fileName;
 	cout<<"Type the location and the file's name you want to open: ";
 	cin>>fileName;
-
+	
 	fin.open(fileName);
 	if (fin.good()){
+		char decision;
+		cout<<"FO/FI MENU (select one option):"<<endl;
+		cout<<"==============================="<<endl;
+		cout<<"(1) Lines and Characters Counter."<<endl;
+		cout<<"(2) Array manipulation with data from external file."<<endl;
+		cout<<"(3) File programmating writing."<<endl;
+		cout<<"(4) Quit."<<endl;
+		cout<<"===============================\n";
+		cin>>decision;
+
+		switch (decision) {
+			case 1:
+				{
+				
+				}
+				break;
+			case 2:
+				{
+				
+				}
+				break;
+			case 3:
+				{
+				
+				}
+				break;
+			default:
+				recursion();
+		}		
 		//Write a program to count the number of lines and the number of characters in a text file.
 		cout<<fileName<<" opened successfully!"<<endl;
 		int charNum = 0;
