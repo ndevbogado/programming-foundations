@@ -6,6 +6,7 @@ using namespace std;
 
 void fileInputMenu();
 void recursion();
+string openFile();
 
 int main(){
 
@@ -14,11 +15,8 @@ int main(){
 
 void fileInputMenu() {
 	ifstream fin;	
-	string fileName;
-
-	cout<<"Type the location and the file's name you want to open: ";
-	cin>>fileName;
 	
+	string fileName = openFile();	
 	fin.open(fileName);
 	if (fin.good()){
 		//cout<<fileName<<" opened successfully!"<<endl;
@@ -93,3 +91,11 @@ void recursion() {
 	}
 }
 
+string openFile() {
+	
+	string fileName;
+
+	cout<<"Type the location and the file's name you want to open: ";
+	cin>>fileName;
+	return fileName;
+}
