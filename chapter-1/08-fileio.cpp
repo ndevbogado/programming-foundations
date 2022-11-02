@@ -62,11 +62,37 @@ void fileInputMenu() {
 			case 3:
 				{
 					//Write a program that allows the user to write input to a text file lone by line, until they enter 'quit'.
+					ofstream fout;
+					ifstream ifile;
+
+					string writeFile = openFile();
+					ifile.open(writeFile);
+					if (ifile) {
+						char overWrite;
+						cout<<writeFile<<"  exists. Do you want to overwrite it? (Type 'Y' or 'N')"<<endl;
+						cin>>overWrite;
+						if (overWrite == 'Y' || overWrite == 'y') {
+							fout.open(writeFile);	
+						} else {
+							recursion();
+						}
+					} else {
+						char create;
+						cout<<writeFile<<" doesn't exist. Do you want to create it?"<<endl;
+						cin>>create;
+						if (create == 'Y' || create == 'y') {
+							fout.open(writeFile);
+						} else {
+							recursion();
+						}
+					}
+					
 					cout<<"Write a string to test."<<endl;
 					string myInput;	
 					getline(cin>>ws,myInput);
 					cout<<"the string was: "<<myInput<<endl;		
-					
+					//fout.close();
+	
 					recursion();
 				}
 				break;
@@ -80,6 +106,7 @@ void fileInputMenu() {
 }
 
 void recursion() {
+
 	char tryAgain;
 	cout<<"Do you want to try it again? (Type 'Y' or 'N') ";
 	cin>>tryAgain;
@@ -99,3 +126,4 @@ string openFile() {
 	cin>>fileName;
 	return fileName;
 }
+
