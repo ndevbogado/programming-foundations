@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -8,13 +8,14 @@ void fileInputMenu();
 void recursion();
 
 int main(){
+
 	fileInputMenu();
 }
 
 void fileInputMenu() {
-	ifstream fin;
-	
+	ifstream fin;	
 	string fileName;
+
 	cout<<"Type the location and the file's name you want to open: ";
 	cin>>fileName;
 	
@@ -34,7 +35,6 @@ void fileInputMenu() {
 		switch (decision) {
 			case 1:
 				{
-				
 					//Write a program to count the number of lines and the number of characters in a text file.
 					int charNum = 0;
 					int lineNum = 0;
@@ -56,12 +56,20 @@ void fileInputMenu() {
 				break;
 			case 2:
 				{
+//write a program to input a specified number of integers values from a file into an array, sort the array from lowest to highest and output the array to the console.
+				
 				
 				}
 				break;
 			case 3:
 				{
-				
+					//Write a program that allows the user to write input to a text file lone by line, until they enter 'quit'.
+					cout<<"Write a string to test."<<endl;
+					string myInput;	
+					getline(cin>>ws,myInput);
+					cout<<"the string was: "<<myInput<<endl;		
+					
+					recursion();
 				}
 				break;
 			default:
@@ -69,7 +77,7 @@ void fileInputMenu() {
 		}		
 	} else {  
 		cout<<"An Error has occurred while opening: "<<fileName<<endl;	
-	recursion();
+		recursion();
 	}
 }
 
@@ -84,8 +92,4 @@ void recursion() {
 		cout<<"Good-Bye!"<<endl;
 	}
 }
-
-//write a program to input a specified number of integers values from a file into an array, sort the array from lowest to highest and output the array to the console.
-//Write a program that allows the user to write input to a text file lone by line, until they enter 'quit'.
-
 
