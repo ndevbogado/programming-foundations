@@ -110,23 +110,32 @@ void programmaticWriting () {
 	string writeFile = openFile();
 	ifile.open(writeFile);
 	if (ifile) {
-	char overWrite;
-	cout<<writeFile<<"  exists. Do you want to overwrite it? (Type 'Y' or 'N')"<<endl;
-	cin>>overWrite;
-	if (overWrite == 'Y' || overWrite == 'y') {
-		fout.open(writeFile);	
+		
+		ifile.close();
+		char overWrite;
+		cout<<writeFile<<"  exists. Do you want to overwrite it? (Type 'Y' or 'N')"<<endl;
+		cin>>overWrite;
+		
+		if (overWrite == 'Y' || overWrite == 'y') {
+			fout.open(writeFile);	
+
+		} else {
+			recursion();
+
+		}
 	} else {
-		recursion();
-	}
-	} else {
-	char create;
-	cout<<writeFile<<" doesn't exist. Do you want to create it?"<<endl;
-	cin>>create;
-	if (create == 'Y' || create == 'y') {
-		fout.open(writeFile);
-	} else {
-		recursion();
-	}
+
+		ifile.close();
+		char create;
+		cout<<writeFile<<" doesn't exist. Do you want to create it?"<<endl;
+		cin>>create;
+		if (create == 'Y' || create == 'y') {
+			fout.open(writeFile);
+	
+		} else {
+				
+			recursion();
+		}
 	}
 
 	cout<<"Write a string to test."<<endl;
