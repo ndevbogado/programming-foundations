@@ -8,6 +8,9 @@ void fileInputMenu();
 void recursion();
 string openFile();
 
+void lineAndCharCounter();
+void programmaticWriting();
+
 int main(){
 
 	fileInputMenu();
@@ -27,33 +30,7 @@ void fileInputMenu() {
 		switch (decision) {
 			case 1:
 				{
-					
-					ifstream fin;	
-					
-					string fileName = openFile();	
-					fin.open(fileName);
-					if (fin.good()){
-						//Write a program to count the number of lines and the number of characters in a text file.
-						int charNum = 0;
-						int lineNum = 0;
-						int number;
-						string line;
-								
-						for (int lines = 0; getline(fin, line); lines++) {
-							lineNum++;
-							for (int i = 0; line[i]; i++) {
-								charNum++;
-							}
-						}
-						
-						cout<<"Number of Lines in "<<fileName<<", is: "<<lineNum<<endl;
-						cout<<"Number of Characters in "<<fileName<<" is: "<<charNum<<endl;
-					
-						recursion();
-					} else {  
-						cout<<"An Error has occurred while opening: "<<fileName<<endl;	
-						recursion();
-					}
+					lineAndCharCounter();			
 				}
 				break;
 			case 2:
@@ -65,39 +42,7 @@ void fileInputMenu() {
 				break;
 			case 3:
 				{
-					//Write a program that allows the user to write input to a text file lone by line, until they enter 'quit'.
-					ofstream fout;
-					ifstream ifile;
-
-					string writeFile = openFile();
-					ifile.open(writeFile);
-					if (ifile) {
-						char overWrite;
-						cout<<writeFile<<"  exists. Do you want to overwrite it? (Type 'Y' or 'N')"<<endl;
-						cin>>overWrite;
-						if (overWrite == 'Y' || overWrite == 'y') {
-							fout.open(writeFile);	
-						} else {
-							recursion();
-						}
-					} else {
-						char create;
-						cout<<writeFile<<" doesn't exist. Do you want to create it?"<<endl;
-						cin>>create;
-						if (create == 'Y' || create == 'y') {
-							fout.open(writeFile);
-						} else {
-							recursion();
-						}
-					}
-					
-					cout<<"Write a string to test."<<endl;
-					string myInput;	
-					getline(cin>>ws,myInput);
-					cout<<"the string was: "<<myInput<<endl;		
-					//fout.close();
-	
-					recursion();
+					programmaticWriting();
 				}
 				break;
 			default:
@@ -127,3 +72,68 @@ string openFile() {
 	return fileName;
 }
 
+void lineAndCharCounter () {
+	ifstream fin;	
+	
+	string fileName = openFile();	
+	fin.open(fileName);
+	if (fin.good()){
+		//Write a program to count the number of lines and the number of characters in a text file.
+		int charNum = 0;
+		int lineNum = 0;
+		int number;
+		string line;
+				
+		for (int lines = 0; getline(fin, line); lines++) {
+			lineNum++;
+			for (int i = 0; line[i]; i++) {
+				charNum++;
+			}
+		}
+		
+		cout<<"Number of Lines in "<<fileName<<", is: "<<lineNum<<endl;
+		cout<<"Number of Characters in "<<fileName<<" is: "<<charNum<<endl;
+	
+		recursion();
+	} else {  
+		cout<<"An Error has occurred while opening: "<<fileName<<endl;	
+		recursion();
+	}
+}
+
+void programmaticWriting () {
+
+	//Write a program that allows the user to write input to a text file lone by line, until they enter 'quit'.
+	ofstream fout;
+	ifstream ifile;
+
+	string writeFile = openFile();
+	ifile.open(writeFile);
+	if (ifile) {
+	char overWrite;
+	cout<<writeFile<<"  exists. Do you want to overwrite it? (Type 'Y' or 'N')"<<endl;
+	cin>>overWrite;
+	if (overWrite == 'Y' || overWrite == 'y') {
+		fout.open(writeFile);	
+	} else {
+		recursion();
+	}
+	} else {
+	char create;
+	cout<<writeFile<<" doesn't exist. Do you want to create it?"<<endl;
+	cin>>create;
+	if (create == 'Y' || create == 'y') {
+		fout.open(writeFile);
+	} else {
+		recursion();
+	}
+	}
+
+	cout<<"Write a string to test."<<endl;
+	string myInput;	
+	getline(cin>>ws,myInput);
+	cout<<"the string was: "<<myInput<<endl;		
+	//fout.close();
+
+	recursion();
+}
