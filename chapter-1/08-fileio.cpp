@@ -137,20 +137,17 @@ void modifyFile (string writeFile) {
 	ofstream fout;
 	fout.open(writeFile,fstream::app);
 
-	cout<<"Write here: ";
+	cout<<"(Type 'quit' to exit) -- Write here: ";
 	string myInput;	
 	getline(cin>>ws,myInput);
-	fout<<myInput<<endl;		
-
-	fout.close();
-
-	cout<<"Do you want to continue modifying the current file? (Type 'Y' or 'N') ";
-	char modify;
-	cin>>modify;	
-	if (modify == 'Y' || modify == 'y') {
+	if (myInput != "quit"){
+		fout<<myInput<<endl;		
 		modifyFile(writeFile);
+
 	} else {
+		fout.close();
 		recursion();
+
 	}
 }
 void arrayManipulation () {
