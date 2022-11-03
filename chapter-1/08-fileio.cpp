@@ -11,6 +11,7 @@ string openFile();
 void lineAndCharCounter();
 void programmaticWriting();
 void modifyFile(string writeFile);
+void arrayManipulation();
 
 int main(){
 
@@ -36,9 +37,8 @@ void fileInputMenu() {
 				break;
 			case 2:
 				{
-//write a program to input a specified number of integers values from a file into an array, sort the array from lowest to highest and output the array to the console.
-				
-				
+					arrayManipulation();
+					
 				}
 				break;
 			case 3:
@@ -133,7 +133,7 @@ void programmaticWriting () {
 }
 
 void modifyFile (string writeFile) {
-	
+
 	ofstream fout;
 	fout.open(writeFile,fstream::app);
 
@@ -141,7 +141,7 @@ void modifyFile (string writeFile) {
 	string myInput;	
 	getline(cin>>ws,myInput);
 	fout<<myInput<<endl;		
-	
+
 	fout.close();
 
 	cout<<"Do you want to continue modifying the current file? (Type 'Y' or 'N') ";
@@ -151,5 +151,17 @@ void modifyFile (string writeFile) {
 		modifyFile(writeFile);
 	} else {
 		recursion();
+	}
+}
+void arrayManipulation () {
+	//write a program to input a specified number of integers values from a file into an array, sort the array from lowest to highest and output the array to the console.
+	ifstream fin;
+	string fileName = openFile();
+	fin.open(fileName);
+
+	if (fin.good()) {
+		cout<<"file opened"<<endl;
+	} else {
+		cout<<"An error has occurred while opening the file..."<<endl;
 	}
 }
