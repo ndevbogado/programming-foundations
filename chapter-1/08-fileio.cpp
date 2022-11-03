@@ -135,12 +135,12 @@ void programmaticWriting () {
 void modifyFile (string writeFile) {
 	
 	ofstream fout;
-	fout.open(writeFile);
+	fout.open(writeFile,fstream::app);
 
-	cout<<"Write a string to test."<<endl;
+	cout<<"Write here: ";
 	string myInput;	
 	getline(cin>>ws,myInput);
-	cout<<"the string was: "<<myInput<<endl;		
+	fout<<myInput<<endl;		
 	
 	fout.close();
 
