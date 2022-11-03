@@ -104,45 +104,40 @@ void lineAndCharCounter () {
 void programmaticWriting () {
 
 	//Write a program that allows the user to write input to a text file lone by line, until they enter 'quit'.
-	ofstream fout;
 	ifstream ifile;
 
 	string writeFile = openFile();
 	ifile.open(writeFile);
+
 	if (ifile) {
-		
-		ifile.close();
-		char overWrite;
-		cout<<writeFile<<"  exists. Do you want to overwrite it? (Type 'Y' or 'N')"<<endl;
-		cin>>overWrite;
-		
-		if (overWrite == 'Y' || overWrite == 'y') {
-			fout.open(writeFile);	
+		cout<<writeFile<<" exists.\nDo you want to overwrite it? (Type 'Y' or 'N') ";
 
-		} else {
-			recursion();
-
-		}
 	} else {
+		cout<<writeFile<<" doesn't exist.\nDo you want to create it? (Type 'Y' or 'N') ";
 
-		ifile.close();
-		char create;
-		cout<<writeFile<<" doesn't exist. Do you want to create it?"<<endl;
-		cin>>create;
-		if (create == 'Y' || create == 'y') {
-			fout.open(writeFile);
+	}
 	
-		} else {
-				
-			recursion();
-		}
+	ifile.close();
+
+	char manipulate;
+	cin>>manipulate;
+
+	if (manipulate == 'Y' || manipulate == 'y') {
+
+		ofstream fout;
+		fout.open(writeFile);
+
+		cout<<"Write a string to test."<<endl;
+		string myInput;	
+		getline(cin>>ws,myInput);
+		cout<<"the string was: "<<myInput<<endl;		
+		
+		fout.close();
+
+	} else {
+			
+		recursion();
 	}
 
-	cout<<"Write a string to test."<<endl;
-	string myInput;	
-	getline(cin>>ws,myInput);
-	cout<<"the string was: "<<myInput<<endl;		
-	//fout.close();
 
-	recursion();
 }
