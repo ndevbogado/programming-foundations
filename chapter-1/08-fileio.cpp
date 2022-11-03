@@ -10,6 +10,7 @@ string openFile();
 
 void lineAndCharCounter();
 void programmaticWriting();
+void modifyFile(string writeFile);
 
 int main(){
 
@@ -123,21 +124,32 @@ void programmaticWriting () {
 	cin>>manipulate;
 
 	if (manipulate == 'Y' || manipulate == 'y') {
-
-		ofstream fout;
-		fout.open(writeFile);
-
-		cout<<"Write a string to test."<<endl;
-		string myInput;	
-		getline(cin>>ws,myInput);
-		cout<<"the string was: "<<myInput<<endl;		
-		
-		fout.close();
+		modifyFile(writeFile);
 
 	} else {
 			
 		recursion();
 	}
+}
 
+void modifyFile (string writeFile) {
+	
+	ofstream fout;
+	fout.open(writeFile);
 
+	cout<<"Write a string to test."<<endl;
+	string myInput;	
+	getline(cin>>ws,myInput);
+	cout<<"the string was: "<<myInput<<endl;		
+	
+	fout.close();
+
+	cout<<"Do you want to continue modifying the current file? (Type 'Y' or 'N') ";
+	char modify;
+	cin>>modify;	
+	if (modify == 'Y' || modify == 'y') {
+		modifyFile(writeFile);
+	} else {
+		recursion();
+	}
 }
