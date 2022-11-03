@@ -14,12 +14,6 @@ int main(){
 }
 
 void fileInputMenu() {
-	ifstream fin;	
-	
-	string fileName = openFile();	
-	fin.open(fileName);
-	if (fin.good()){
-		//cout<<fileName<<" opened successfully!"<<endl;
 		int decision;
 		cout<<endl<<"FO/FI MENU (select one option):"<<endl;
 		cout<<"==============================="<<endl;
@@ -33,23 +27,33 @@ void fileInputMenu() {
 		switch (decision) {
 			case 1:
 				{
-					//Write a program to count the number of lines and the number of characters in a text file.
-					int charNum = 0;
-					int lineNum = 0;
-					int number;
-					string line;
-							
-					for (int lines = 0; getline(fin, line); lines++) {
-						lineNum++;
-						for (int i = 0; line[i]; i++) {
-							charNum++;
-						}
-					}
 					
-					cout<<"Number of Lines in "<<fileName<<", is: "<<lineNum<<endl;
-					cout<<"Number of Characters in "<<fileName<<" is: "<<charNum<<endl;
-				
-					recursion();
+					ifstream fin;	
+					
+					string fileName = openFile();	
+					fin.open(fileName);
+					if (fin.good()){
+						//Write a program to count the number of lines and the number of characters in a text file.
+						int charNum = 0;
+						int lineNum = 0;
+						int number;
+						string line;
+								
+						for (int lines = 0; getline(fin, line); lines++) {
+							lineNum++;
+							for (int i = 0; line[i]; i++) {
+								charNum++;
+							}
+						}
+						
+						cout<<"Number of Lines in "<<fileName<<", is: "<<lineNum<<endl;
+						cout<<"Number of Characters in "<<fileName<<" is: "<<charNum<<endl;
+					
+						recursion();
+					} else {  
+						cout<<"An Error has occurred while opening: "<<fileName<<endl;	
+						recursion();
+					}
 				}
 				break;
 			case 2:
@@ -99,10 +103,6 @@ void fileInputMenu() {
 			default:
 				recursion();
 		}		
-	} else {  
-		cout<<"An Error has occurred while opening: "<<fileName<<endl;	
-		recursion();
-	}
 }
 
 void recursion() {
