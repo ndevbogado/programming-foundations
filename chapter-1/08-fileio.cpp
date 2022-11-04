@@ -195,8 +195,10 @@ void arrayManipulation () {
 			cout<<lowestToHighest[i]<<endl;
 		}
 
-		fin.close();
 	} else {
 		cout<<"An error has occurred while opening the file..."<<endl;
 	}
+	
+	fin.close();
+	recursion();
 }
