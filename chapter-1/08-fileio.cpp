@@ -155,9 +155,21 @@ void arrayManipulation () {
 	ifstream fin;
 	string fileName = openFile();
 	fin.open(fileName);
-
+	
 	if (fin.good()) {
 		cout<<"file opened"<<endl;
+
+		cout<<"Enter the number of integers (greater than 1) you want to work with: ";
+		int numbersQuantity;
+		cin>>numbersQuantity;	
+		int numbers[numbersQuantity];
+		for (int i = 0 ; i < numbersQuantity ; i++) {
+			fin>>numbers[i];
+			cout<<numbers[i];
+
+		}
+		
+
 	} else {
 		cout<<"An error has occurred while opening the file..."<<endl;
 	}
