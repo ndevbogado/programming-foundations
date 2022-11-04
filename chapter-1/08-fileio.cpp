@@ -12,7 +12,7 @@ void lineAndCharCounter();
 void programmaticWriting();
 void modifyFile(string writeFile);
 void arrayManipulation();
-
+void arrayPrint(int array[], int size);
 int main(){
 
 	fileInputMenu();
@@ -165,9 +165,10 @@ void arrayManipulation () {
 		int numList[quantity];
 		for (int i = 0 ; i < quantity ; i++) {
 			fin>>numList[i];
-			cout<<"Number "<<i<<" : "<<numList[i]<<endl;
-
 		}
+
+		cout<<"Extracted Numbers: ";
+		arrayPrint(numList, quantity);
 
 		int unorganizedCounter;
 		int aux;
@@ -179,7 +180,7 @@ void arrayManipulation () {
 					aux = numList[i+1];
 					numList[i+1] = numList[i];
 					numList[i] = aux;
-					
+
 					unorganizedCounter++; 	
 				} 
 			}
@@ -192,9 +193,11 @@ void arrayManipulation () {
 		int lowestToHighest[quantity];
 		for (int i = 0 ; i < quantity ; i++) {
 			lowestToHighest[i] = numList[i];
-			cout<<lowestToHighest[i]<<endl;
+			//cout<<lowestToHighest[i]<<endl;
 		}
-
+		
+		cout<<"Final Array: ";
+		arrayPrint(lowestToHighest, quantity);
 	} else {
 		cout<<"An error has occurred while opening the file..."<<endl;
 	}
@@ -202,3 +205,15 @@ void arrayManipulation () {
 	fin.close();
 	recursion();
 }
+
+void arrayPrint(int array[], int size) {
+	for (int i = 0 ; i < size ; i++ ) 	
+		if (i == 0) {
+			cout<<"[ "<<array[i]<<", ";
+		} else if (i == size-1 ) {
+			cout<<array[i]<<" ]"<<endl;
+		} else {
+			cout<<array[i]<<", ";
+		}
+	}
+
