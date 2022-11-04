@@ -165,15 +165,36 @@ void arrayManipulation () {
 		int numList[quantity];
 		for (int i = 0 ; i < quantity ; i++) {
 			fin>>numList[i];
-			cout<<"Number "<<i<<" :"<<numList[i]<<endl;
+			cout<<"Number "<<i<<" : "<<numList[i]<<endl;
 
 		}
+
+		int unorganizedCounter;
+		int aux;
+		bool notOrganized = true;
+		while (notOrganized) {
+			unorganizedCounter = 0;
+			for (int i = 0 ; i < quantity-1 ; i++){
+				if (numList[i] > numList[i+1]) {
+					aux = numList[i+1];
+					numList[i+1] = numList[i];
+					numList[i] = aux;
+					
+					unorganizedCounter++; 	
+				} 
+			}
+			if (unorganizedCounter == 0) {
+				notOrganized = false;
+			}
+		}
+
+
 		int lowestToHighest[quantity];
-
-
 		for (int i = 0 ; i < quantity ; i++) {
+			lowestToHighest[i] = numList[i];
 			cout<<lowestToHighest[i]<<endl;
-		} 
+		}
+
 		fin.close();
 	} else {
 		cout<<"An error has occurred while opening the file..."<<endl;
